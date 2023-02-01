@@ -5,5 +5,19 @@
     display: flex;
     position: relative;
     scroll-snap-align: start;
-    flex: none;
+    justify-content: center;
+    align-items: center;
+    >.box{
+        height: 70vh;
+        width: 50vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+        grid-gap: 30%;
+        .contactos-card{
+            height: 100%;
+            background-color: white;
+            border-radius: 2rem;
+        }
+    }
 }
