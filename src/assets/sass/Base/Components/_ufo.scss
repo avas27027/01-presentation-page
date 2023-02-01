@@ -1,0 +1,255 @@
+@use "../../Abstracts/" as *;
+@keyframes ufo-self__rotation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    left: -15vw;
+    opacity: 1;
+  }
+}
+@keyframes ufo-view1s {
+  0% {
+    z-index: -1;
+    left: -30vw;
+    top: 0;
+    transform: scale(calc(var(--s) - 0.4));
+    rotate: 360deg;
+  }
+  35% {
+    z-index: -1;
+    top: 30vh;
+    left: 70vw;
+    transform: scale(calc(var(--s) - 0.2));
+    rotate: 350deg;
+  }
+  70% {
+    top: 50vh;
+    left: 10vw;
+    rotate: 370deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+@keyframes ufo-view2s {
+  0% {
+    z-index: -1;
+    left: 130vw;
+    top: 0;
+    transform: scale(calc(var(--s) - 0.4));
+    rotate: 360deg;
+  }
+  35% {
+    z-index: -1;
+    top: 30vh;
+    left: 30vw;
+    transform: scale(calc(var(--s) - 0.2));
+    rotate: 370deg;
+  }
+  70% {
+    top: 50vh;
+    left: 80vw;
+    rotate: 350deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+@keyframes ufo-xMove {
+  25% {
+    transform: translateX(20vw) scale(var(--s));
+    rotate: -10deg;
+  }
+  50% {
+    transform: translateY(-20vw) translateX(0vw) scale(var(--s));
+    rotate: 10deg;
+  }
+  75% {
+    transform: translateY(-20vw) translateX(20vw) scale(var(--s));
+    rotate: -10deg;
+  }
+}
+@keyframes ufo-upDown {
+  50% {
+    transform: translateY(-50vh) scale(var(--s));
+  }
+}
+@keyframes ufo-leftRight {
+  20% {
+    transform: translateX(80vw) scale(var(--s));
+  }
+  40% {
+    transform: translateX(80vw) translateY(-70vh) scale(var(--s));
+  }
+  60% {
+    transform: translateX(-80vw) translateY(-70vh) scale(var(--s));
+  }
+  80% {
+    transform: translateX(-80vw) translateY(0vh) scale(var(--s));
+  }
+}
+@keyframes ufo-square {
+  25% {
+    transform: translateX(80vw) scale(var(--s));
+    z-index: -1;
+  }
+  50% {
+    transform: translateX(80vw) translateY(-70vh) scale(var(--s));
+  }
+  74% {
+    z-index: -1;
+  }
+  75% {
+    z-index: 4;
+    transform: translateX(00vw) translateY(-70vh) scale(var(--s));
+  }
+}
+@keyframes ufo-end {
+  100% {
+    transform: translateY(-100vw) scale(var(--s));
+  }
+}
+@keyframes ufo-click {
+  100% {
+    rotate: -360deg;
+  }
+}
+@keyframes ufo-click1 {
+  100% {
+    rotate: -360deg;
+  }
+}
+@keyframes ufo-rayAni {
+  25% {
+    top: 15vw;
+  }
+  75% {
+    top: 9vw;
+  }
+}
+.ufo {
+  --s: 0.5;
+  transform: scale(var(--s));
+  position: fixed;
+  width: 15vw;
+  height: 9vw;
+  top: -120vh;
+  left: 20vw;
+  z-index: 4;
+  cursor: pointer;
+  @media screen and (max-width: $small), (orientation: portrait) {
+    top: 15vh;
+    left: 42vw;
+    --s: 1.5;
+  }
+
+  &.aniV1start {
+    transform: scale(calc(var(--s) + 0.8));
+    animation: ufo-view1s 3s;
+    top: 40vh;
+    @media screen and (max-width: $small), (orientation: portrait) {
+      transform: scale(var(--s));
+    }
+  }
+  &.aniV2start {
+    left: 80vw;
+    top: 70vh;
+    --s: 0.8;
+    animation: ufo-view2s 3s,
+      ufo-upDown 4s cubic-bezier(0.5, 1, 0.5, 1) 3s infinite;
+    @media screen and (max-width: $small), (orientation: portrait) {
+      --s: 1.5;
+      top: 15vh;
+      left: 42vw;
+      animation: ufo-view2s 3s, ufo-leftRight 4s linear 3s infinite;
+    }
+  }
+  &.aniV3start {
+    top: 80vh;
+    left: 30vw;
+    animation: ufo-view1s 3s,
+      ufo-square 10s cubic-bezier(0.5, 0.5, 1, 1) 3s infinite;
+    @media screen and (max-width: $small), (orientation: portrait) {
+      top: 15vh;
+      left: 42vw;
+      animation: ufo-view2s 3s, ufo-leftRight 4s linear 3s infinite;
+    }
+  }
+  &.aniVEnd {
+    transition: 1s;
+    top: -100vh;
+  }
+  &-plate {
+    width: 100%;
+    height: 100%;
+    animation: ufo-click 1s;
+    &.aniClick {
+      animation: ufo-click1 1s;
+    }
+    .ufo-capsule {
+      position: absolute;
+      left: 4vw;
+      width: 7vw;
+      height: 8vw;
+      background-color: $third_color;
+      box-shadow: inset 1vw 0 3vw lighten($fourth_color, 20%);
+      border-radius: 100%;
+    }
+    .ufo-body {
+      position: absolute;
+      top: 4vw;
+      width: 15vw;
+      height: 4vw;
+      background: linear-gradient(lighten($sixth_color, 20%), $sixth_color);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      div {
+        position: absolute;
+        animation: ufo-self__rotation 2s linear infinite;
+        opacity: 0;
+        top: 0.5vw;
+        left: 15vw;
+        display: flex;
+        justify-content: space-around;
+        span {
+          margin: 0 0.25vw;
+          width: 2.5vw;
+          height: 3vw;
+          background-color: white;
+          box-shadow: inset 2px 0 5px rgb(37, 37, 37);
+          border-radius: 100%;
+        }
+      }
+    }
+
+    .ufo-base {
+      position: absolute;
+      background: linear-gradient(
+        darken($fiveth_color, 20%) 60%,
+        $fiveth_color 120%
+      );
+      top: 7vw;
+      left: 5vw;
+      height: 2vw;
+      width: 5vw;
+      border-radius: 2rem;
+    }
+    .ufo-ray {
+      &-circle {
+        --v: 1;
+        position: absolute;
+        left: 5.5vw;
+        top: 9vw;
+        width: 4vw;
+        height: 1vw;
+        box-shadow: 0 0 0.5vw $third_color;
+        border-radius: 100%;
+        animation: appear 5s, ufo-rayAni var(--v) linear infinite;
+        &.ani {
+          animation: appear1 5s, ufo-rayAni var(--v) linear infinite;
+        }
+      }
+    }
+  }
+}

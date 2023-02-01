@@ -1,0 +1,161 @@
+@use "../../Abstracts/" as *;
+$color_star: white;
+$size_star: 5px;
+@keyframes blink {
+  0% {
+    width: 3px;
+    height: 3px;
+    opacity: 0.1;
+    box-shadow: 0 0 10px $color_star;
+  }
+  50% {
+    width: $size_star;
+    height: $size_star;
+    opacity: 1;
+    box-shadow: 0 0 calc($size-star * 2) $color_star;
+  }
+  100% {
+    width: 3px;
+    height: 3px;
+    opacity: 0.1;
+    box-shadow: 0 0 10px $color_star;
+  }
+}
+@keyframes starsDown {
+  0% {
+    transform: translateY(0vh);
+  }
+  50% {
+    transform: translateY(-150vh);
+    visibility: hidden;
+  }
+  51% {
+    visibility: hidden;
+    transform: translateY(150vh);
+  }
+  100% {
+    visibility: visible;
+    transform: translateY(0vh);
+  }
+}
+@keyframes starsDown1 {
+  0% {
+    transform: translateY(0vh);
+  }
+  50% {
+    transform: translateY(-150vh);
+    visibility: hidden;
+  }
+  51% {
+    visibility: hidden;
+    transform: translateY(150vh);
+  }
+  100% {
+    visibility: visible;
+    transform: translateY(0vh);
+  }
+}
+@keyframes flyL {
+  0% {
+    top: -10vh;
+  }
+  3% {
+    opacity: 1;
+  }
+  5% {
+    transform: translateX(-50vw) translateY(90vh);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flyP {
+  0% {
+    right: -10vw;
+  }
+  3% {
+    opacity: 1;
+  }
+  5% {
+    transform: translateX(-90vw) translateY(50vh);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes appear1 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cosmos {
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  &-star {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    background-color: $color_star;
+    width: $size_star;
+    height: $size_star;
+    border-radius: 100%;
+    box-shadow: 0px 0 calc($size-star * 2) $color_star;
+    filter: blur(3px);
+    transition: 1s;
+    animation: starsDown linear 0.5s 7, blink var(--i) infinite;
+  }
+
+  &-comet {
+    position: absolute;
+    top: 120vh;
+    left: var(--w);
+    background-color: $third_color;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    box-shadow: 0px 0 30px $third_color;
+    filter: blur(3px);
+    animation: flyL 10s linear 1s infinite;
+
+    @media screen and (max-width: $small), (orientation: portrait) {
+      right: 120vw;
+      top: var(--h);
+      animation: flyP 10s linear 1s infinite;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 350%;
+      height: 50%;
+      top: -100%;
+      border-radius: 0 100% 100% 0;
+      rotate: -45deg;
+      background-color: $third_color;
+      box-shadow: 0px 0 30px $third_color;
+      opacity: 0.5;
+    }
+  }
+}

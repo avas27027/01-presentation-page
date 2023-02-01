@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Barlow+Semi+Condensed:wght@300&family=Comfortaa:wght@300;600&display=swap');
+
+@font-face {
+    font-family: 'Aunchanted';
+    src: url("/AunchantedXspace-Bold.ttf");
+    font-style: normal;
+}
+@font-face {
+    font-family: 'A-Space Demo';
+    src: url('/A-Space_Bold_Demo.otf');
+}
+@font-face {
+    font-family: 'RockoFLF';
+    src: url('/RockoFLF-Bold.ttf');
+}
+
+$primary_color: #6889A6;
+$secondary_color: #2F6C73;
+$third_color: #AEF2F2;
+$fourth_color: #0A1126;
+$fondo: #121D40;
+
+$fiveth_color: #7374D9;
+$sixth_color: #0F0F40;
+
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$xlarge: 1200px;
+
+$primary-font-family: 'Barlow Semi Condensed';
+$secondary-font-family:'Comfortaa';
+$third-font-family: 'RockoFLF';

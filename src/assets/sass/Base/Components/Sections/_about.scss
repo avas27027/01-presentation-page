@@ -1,0 +1,268 @@
+@use "../../../Abstracts/" as *;
+
+@keyframes tilt1 {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes tilt2 {
+  0% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.about {
+  height: 100vh;
+  display: flex;
+  position: relative;
+  scroll-snap-align: start;
+  flex: none;
+
+  @media screen and (max-width: $small), (orientation: portrait) {
+    flex-direction: column;
+  }
+
+  &__box {
+    padding-right: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    flex: 1;
+    &.dum {
+      padding: 0;
+      flex: 2;
+      @media screen and (max-width: $large) {
+        flex: 1;
+      }
+      @media screen and (max-width: $small), (orientation: portrait) {
+        flex: 2;
+      }
+    }
+
+    @media screen and (max-width: $small), (orientation: portrait) {
+      flex: 5;
+      justify-content: center;
+      padding: 0 2%;
+    }
+
+    &-header {
+      //margin: 5% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      flex: 1;
+
+      &.pic {
+        height: 40vh;
+        width: 40vh;
+        inset: 0;
+        flex: none;
+        position: relative;
+        transform-style: preserve-3d;
+
+        &:hover {
+          img {
+            transform: rotateY(0deg);
+          }
+
+          div {
+            transform: rotateY(180deg);
+          }
+        }
+
+        @media screen and (max-width: $large) {
+          height: 85%;
+          width: 70%;
+        }
+
+        @media screen and (max-width: $small), (orientation: portrait) {
+          height: 100%;
+          width: 60%;
+        }
+
+        div,
+        img {
+          position: absolute;
+          width: 95%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transition: 1s;
+          box-shadow: -10px 0px 15px transparentize($fiveth_color, 0.7);
+          border-radius: 100%;
+
+          @media screen and (max-width: $large) {
+            border-radius: 1em;
+          }
+          @media screen and (max-width: $small), (orientation: portrait) {
+            border-radius: 100%;
+          }
+        }
+
+        div {
+          padding-left: 5%;
+          display: flex;
+          align-items: center;
+          &.ani {
+            animation: tilt1 1s 4s;
+          }
+          h2 {
+            font-size: 3.5vh;
+            @media screen and (max-width: $large) {
+              font-size: 1.5rem;
+            }
+            @media screen and (max-width: $small), (orientation: portrait) {
+              font-size: 3.5vh;
+            }
+          }
+        }
+
+        img {
+          transform: rotateY(180deg);
+          &.ani {
+            animation: tilt2 1s 4s;
+          }
+          object-fit: cover;
+        }
+      }
+    }
+
+    &-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        font-size: 3vh;
+        @media screen and (max-width: $large) {
+          font-size: 1rem;
+        }
+        @media screen and (max-width: $small), (orientation: portrait) {
+          font-size: 3vh;
+        }
+      }
+
+      p {
+        margin: 5% 0;
+        text-align: justify;
+        transition: 0.5s ease;
+        font-size: 2.4vh;
+        @media screen and (max-width: $large) {
+          margin: 0;
+          font-size: 0.9em;
+        }
+        @media screen and (max-width: $small), (orientation: portrait) {
+          font-size: 2.4vh;
+        }
+
+        span {
+          opacity: 0;
+          max-height: 0;
+          font-size: 0;
+          transition: 0.25s ease;
+          @media screen and (max-width: $large) {
+          }
+        }
+      }
+
+      &-link {
+        margin-top: 5%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        a {
+          color: $fourth_color;
+          background-color: darken($third_color, 10%);
+          padding: 0.5% 2%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2rem;
+          border: 1px solid darken($third_color, 12%);
+          border-radius: 0.25em;
+          width: 100%;
+          @media screen and (max-width: $small), (orientation: portrait) {
+            font-size: 5vh;
+          }
+          &:hover {
+            filter: brightness(80%);
+          }
+        }
+      }
+
+      //mostrar más
+      input {
+        display: none;
+      }
+      p br {
+        display: none;
+      }
+
+      input:checked ~ p span {
+        opacity: 1;
+        font-size: inherit;
+        max-height: 999em;
+      }
+
+      input:checked ~ p {
+        position: absolute;
+        z-index: 2;
+        width: 32vw;
+        height: 85vh;
+        background-color: white;
+        border-radius: 0.5em;
+        top: 0;
+        padding: 2% 2%;
+        right: 5%;
+        overflow: auto;
+        @media screen and (max-width: $large) {
+          width: 90vw;
+          height: 90vh;
+          top: 5vh;
+          padding: 2.2em 5%;
+          font-size: 1.2em;
+        }
+        @media screen and (max-width: $small), (orientation: portrait) {
+          width: 96vw;
+          right: 2vw;
+          top: 0;
+          height: 95vh;
+        }
+      }
+
+      input ~ p > label::before {
+        content: "Mostrar más...";
+      }
+
+      input:checked ~ p br {
+        display: block;
+      }
+
+      input:checked ~ p > label::before {
+        content: "Mostrar menos...";
+      }
+
+      p > label {
+        display: block;
+        cursor: pointer;
+        display: inline-block;
+      }
+    }
+  }
+}

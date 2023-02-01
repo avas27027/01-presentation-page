@@ -1,0 +1,9 @@
+@use "../../../Abstracts/" as *;
+
+.contactos{
+    height: 100vh;
+    display: flex;
+    position: relative;
+    scroll-snap-align: start;
+    flex: none;
+}

@@ -1,0 +1,178 @@
+@use "../../../Abstracts/" as *;
+
+@keyframes charging {
+  0% {
+    background-position: 500% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@keyframes moveLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+    height: 100%;
+  }
+}
+@keyframes apear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.capacities {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  scroll-snap-align: start;
+  flex: none;
+  @media screen and (max-width: $large) {
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+  }
+  @media screen and (max-width: $small), (orientation: portrait) {
+    align-items: flex-end;
+  }
+  &-box {
+    max-height: 90%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 25%;
+    @media screen and (max-width: $large) {
+      margin-left: 15%;
+      width: 60%;
+      flex-direction: column;
+    }
+    @media screen and (max-width: $small), (orientation: portrait) {
+      margin: 0 2%;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 0%;
+      @media screen and (min-width: $large) {
+        display: none;
+        margin-bottom: 5%;
+      }
+      @media screen and (max-width: $small), (orientation: portrait) {
+        text-align: center;
+        font-size: 4vh;
+        margin-bottom: 4%;
+      }
+    }
+    .lenguajes {
+      max-height: 100%;
+      padding: 0;
+      margin-left: 2%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 50% 50%;
+
+      .bar {
+        overflow: hidden;
+        @media screen and (max-width: $small), (orientation: portrait) {
+          width: 90%;
+        }
+        h3 {
+          font-size: 3vh;
+          @media screen and (max-width: $large){
+            font-size: 0.9rem;
+          }
+          @media screen and (max-width: $small), (orientation: portrait) {
+            font-size: 2.2vh;
+          }
+        }
+
+        &-back {
+          /*
+          &.ani {
+            animation: apear 5s ease 3s;
+          }*/
+          position: relative;
+          margin: 25px 0;
+          background: linear-gradient(
+            90deg,
+            lighten($sixth_color, 5%) 50%,
+            $fondo 90%
+          );
+          height: 6vh;
+          width: 90%;
+          border-radius: 0.25em;
+          -webkit-box-reflect: below 0px linear-gradient(transparent 60%, #0005);
+          @media screen and (max-width: $large){
+            margin: 15px 0;
+            height: 30px;
+          }
+          @media screen and (max-width: $small), (orientation: portrait) {
+            height: 5vh;
+            margin: 3vh 0;
+          }
+        }
+
+        &-tags {
+          position: absolute;
+          top: -2vh;
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          @media screen and (max-width: $large) {
+            top: -0.7rem;
+          }
+          @media screen and (max-width: $small), (orientation: portrait) {
+            top: -2vh;
+          }
+          p {
+            font-size: 2vh;
+            color: $primary_color;
+            @media screen and (max-width: $large){
+              font-size: 0.6rem;
+            }
+            @media screen and (max-width: $small), (orientation: portrait) {
+              font-size: 2vh;
+            }
+            span {
+              @media screen and (max-width: $large) {
+                display: none;
+              }
+            }
+          }
+        }
+
+        &-fill {
+          &.ani {
+            animation: moveLeft 1s linear;
+          }
+
+          div {
+            position: absolute;
+            top: 10%;
+            background-color: transparent;
+            background: linear-gradient(
+              90deg,
+              $fondo,
+              $fiveth_color,
+              $fondo
+            );
+
+            animation: charging 8s linear infinite;
+            background-size: 500%;
+            height: 80%;
+            width: 50%;
+            border-radius: 0.25em;
+          }
+        }
+      }
+    }
+  }
+}

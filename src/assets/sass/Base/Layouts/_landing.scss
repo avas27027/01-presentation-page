@@ -1,0 +1,31 @@
+@use "../../Abstracts/" as *;
+
+
+.landing {
+  &.background {
+    z-index: 0;
+    background: $fondo;
+    background: linear-gradient(
+      0deg,
+      lighten($fourth_color, 1%) 30%,
+      $fourth_color 90%
+    );
+    position: relative;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+  }
+  &.space {
+    height: 200vh;
+    display: flex;
+    align-items: center;
+  }
+
+  &.sections{
+    animation: appear 5s;
+  }
+  
+}

@@ -1,0 +1,289 @@
+@use "../../Abstracts/" as *;
+@keyframes flying {
+  0% {
+    left: 90%;
+    z-index: 3;
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  35% {
+    transform: rotateY(0);
+    z-index: 3;
+    left: -20%;
+  }
+  40% {
+    transform: rotateY(180deg);
+    z-index: 0;
+  }
+  95% {
+    left: 90%;
+    transform: rotateY(180deg);
+    z-index: 0;
+  }
+  100% {
+    z-index: 3;
+    transform: rotateY(0);
+  }
+}
+/*
+@keyframes changePosR {
+  0% {
+    left: 0;
+    transform: translateX(-50vw);
+  }
+  30% {
+    left: 0;
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  60% {
+    right: 0;
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0vw);
+    opacity: 1;
+  }
+}
+@keyframes changePosL {
+  0% {
+    right: 0;
+    transform: translateX(0vw);
+  }
+  30% {
+    right: 0;
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  60% {
+    left: 0;
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0vw);
+    opacity: 1;
+  }
+}*/
+.navbar {
+  position: fixed;
+  width: 100vw;
+  height: 0;
+  font-size: 4rem;
+  z-index: 1;
+  @media screen and (max-width: $large) {
+    height: 0;
+  }
+  &-link__group {
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: 1s;
+    /*
+    &.left {
+      animation: changePosL 2s ease;
+    }
+    &.right {
+      animation: changePosR 2s ease;
+      right: 3%;
+    }*/
+    @media screen and (max-width: $large){
+      transform: translateY(-110vh);
+      align-items: flex-start;
+      backdrop-filter: blur(4px);
+      background-color: transparentize($fourth_color, 0.3);
+      width: 60vw;
+      left: 40vw;
+      &[data-active="true"] {
+        transform: translateY(0vh);
+      }
+    }
+    @media screen and (max-width: $small), (orientation: portrait) {
+      left: 20vw;
+      width: 80vw;
+    }
+  }
+  .navbar-space {
+    position: relative;
+    cursor: pointer;
+    left: 5%;
+    &[data-active="true"] .navbar-moon {
+      box-shadow: 0px 0px 20px $third_color;
+      background-color: $third_color;
+    }
+    &[data-active="true"] .navbar-moon .navbar-moon.fill {
+      transform: translateX(-100%);
+    }
+    &[data-active="true"] .navbar-title {
+      @media screen and (min-width: $large) {
+        transform: translateX(30%);
+        opacity: 1;
+        width: 400%;
+      }
+      /*
+      &.right {
+        @media screen and (min-width: $medium) {
+          transform: translateX(-30%);
+          opacity: 1;
+          width: 500%;
+        }
+      }*/
+    }
+    &:hover {
+      .navbar-moon {
+        filter: brightness(90%);
+        box-shadow: 0px 0px 20px $third_color;
+        background-color: $third_color;
+        .fill {
+          transform: translateX(-100%) rotate(120deg);
+        }
+      }
+      .navbar-title {
+        @media screen and (min-width: $large) {
+          transform: translateX(30%);
+          opacity: 1;
+          width: 400%;
+        }
+        /*
+        &.right {
+          @media screen and (min-width: $medium) {
+            transform: translateX(-30%);
+            opacity: 1;
+            width: 500%;
+          }
+        }*/
+      }
+    }
+    .navbar-title {
+      position: absolute;
+      overflow: hidden;
+      width: 0%;
+      top: 0.4em;
+      font-size: 0.5em;
+      left: 0%;
+      transition: 1s;
+      opacity: 0;
+      /*&.right {
+        left: -320%;
+        text-align: end;
+      }*/
+      @media screen and (max-width: $large) {
+        width: 50vw;
+        opacity: 1;
+        z-index: 3;
+        top: 0;
+        left: 110%;
+      }
+      @media screen and (max-width: $small), (orientation: portrait) {
+        width: 60vw;
+      }
+      h2 {
+        width: fit-content;
+        font-size: 0.9em;
+      }
+    }
+
+    .navbar-moon[data-active="true"] .navbar-title {
+      transform: translateX(30%);
+      opacity: 1;
+      width: 400%;
+    }
+    .navbar-moon {
+      width: 10vh;
+      height: 10vh;
+      border-radius: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: 1s;
+      box-shadow: 0px 0px 20px $primary_color;
+      z-index: 2;
+      background-color: $primary_color;
+      @media screen and (max-width: $small), (orientation: portrait) {
+        width: 10vw;
+        height: 10vw;
+      }
+      span {
+        position: absolute;
+        height: var(--s);
+        width: var(--s);
+        background-color: $fourth_color;
+        border-radius: 100%;
+        box-shadow: -1px 0px 4px $fourth_color;
+      }
+
+      &.fill {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: $fondo;
+        border: none;
+        transition: 0.5s;
+        right: var(--i);
+      }
+    }
+    .ship {
+      position: absolute;
+      top: 10%;
+      left: 100%;
+      opacity: 0;
+      &.ani {
+        animation: flying 2s linear infinite;
+      }
+      &-capsule {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        .ship-body {
+          position: absolute;
+          top: 25%;
+          width: 100%;
+          height: 50%;
+          background-color: white;
+          border-radius: 1em 100% 100% 1em;
+        }
+        span {
+          position: absolute;
+          top: 40%;
+          left: 20%;
+          width: 20%;
+          height: 20%;
+          border-radius: 100%;
+          background-color: black;
+        }
+        .ship-fly {
+          position: absolute;
+          width: 40%;
+          height: 100%;
+          background-color: red;
+          right: 0;
+          top: 0;
+          border-radius: 1em 100% 100% 1em;
+        }
+      }
+    }
+
+    &.button {
+      height: fit-content;
+      width: fit-content;
+      top: 5vh;
+      transition: 1s;
+      /*
+      &.left{
+        animation: changePosL 2s ease;
+      }
+      &.right{
+        animation: changePosR 2s ease;
+        left: 90%;
+      }*/
+      @media screen and (min-width: $large){
+        display: none;
+      }
+    }
+  }
+}
