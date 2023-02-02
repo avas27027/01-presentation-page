@@ -139,7 +139,7 @@
   z-index: 4;
   cursor: pointer;
   @media screen and (max-width: $small), (orientation: portrait) {
-    top: 15vh;
+    top: -120vh;
     left: 42vw;
     --s: 1.5;
   }
@@ -150,6 +150,7 @@
     top: 40vh;
     @media screen and (max-width: $small), (orientation: portrait) {
       transform: scale(var(--s));
+      top: 15vh;
     }
   }
   &.aniV2start {

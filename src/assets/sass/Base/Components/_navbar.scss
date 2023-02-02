@@ -71,7 +71,7 @@
   width: 100vw;
   height: 0;
   font-size: 4rem;
-  z-index: 1;
+  z-index: 5;
   @media screen and (max-width: $large) {
     height: 0;
   }
@@ -113,6 +113,13 @@
     position: relative;
     cursor: pointer;
     left: 5%;
+    opacity: .3;
+    @media screen and (max-width: $large) {
+      opacity: 1;
+    }
+    &[data-active="true"]{
+      opacity: 1;
+    }
     &[data-active="true"] .navbar-moon {
       box-shadow: 0px 0px 20px $third_color;
       background-color: $third_color;
@@ -136,10 +143,12 @@
       }*/
     }
     &:hover {
+      opacity: 1;
       .navbar-moon {
         filter: brightness(90%);
         box-shadow: 0px 0px 20px $third_color;
         background-color: $third_color;
+        
         .fill {
           transform: translateX(-100%) rotate(120deg);
         }

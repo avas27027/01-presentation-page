@@ -1,23 +1,129 @@
 @use "../../../Abstracts/" as *;
-
-.contactos{
-    height: 100vh;
-    display: flex;
-    position: relative;
-    scroll-snap-align: start;
-    justify-content: center;
-    align-items: center;
-    >.box{
-        height: 70vh;
-        width: 50vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 1fr;
-        grid-gap: 30%;
-        .contactos-card{
-            height: 100%;
-            background-color: white;
-            border-radius: 2rem;
-        }
+@keyframes border-square {
+  25% {
+    left: calc(100% - 0.5px);
+    top: -0.5px;
+  }
+  50% {
+    top: calc(100% - 0.5px);
+    left: calc(100% - 0.5px);
+  }
+  75% {
+    left: -0.5px;
+    top: calc(100% - 0.5px);
+  }
+}
+@keyframes title-up {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 20%;
+  }
+}
+@keyframes title-up1 {
+  0% {
+    top: 20%;
+  }
+  100% {
+    top: -100%;
+  }
+}
+.contactos {
+  height: 100vh;
+  display: flex;
+  position: relative;
+  scroll-snap-align: start;
+  justify-content: center;
+  align-items: center;
+  &.box {
+    height: 80vh;
+    width: 50vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-gap: 30%;
+    @media screen and (max-width: $small), (orientation: portrait) {
+      width: 90%;
+      height: 60vh;
     }
+    .contactos-center {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 4.5vw;
+      display: flex;
+      justify-content: center;
+      font-size: 1.5vw;
+      padding: 2% 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        transparentize($primary_color, 0.9) 50%,
+        transparent
+      );
+      @media screen and (max-width: $small), (orientation: portrait) {
+        font-size: 4vw;
+        height: 10%;
+      }
+      &-title {
+        position: absolute;
+        transition: 1s;
+        &.prev {
+          top: -100%;
+          animation: title-up1 1s;
+        }
+        &.post {
+          top: 20%;
+          animation: title-up 1s;
+          position: absolute;
+        }
+      }
+    }
+    .contactos-card {
+      max-height: 100%;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      cursor: pointer;
+      padding: 10%;
+      filter: brightness(0.8);
+      box-shadow: 0 0 30px transparentize($third_color, 0.8);
+      &:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 0 30px transparentize($third_color, 0);
+      }
+      &[data-active="true"] {
+        filter: brightness(1.2);
+        box-shadow: 0 0 30px transparentize($third_color, 0);
+      }
+      span {
+        position: absolute;
+        background-color: white;
+        width: 1px;
+        height: 1px;
+        left: -0.5px;
+        top: -0.5px;
+        //border-radius: 100%;
+        filter: blur(2px);
+        box-shadow: 0 0 15px 4px $third_color;
+        animation: border-square 5s linear infinite;
+      }
+      h2 {
+        color: $third_color;
+        font-size: 2.4vw;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        font-size: 8vw;
+        color: $third_color;
+        @media screen and (max-width: $small), (orientation: portrait) {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
 }

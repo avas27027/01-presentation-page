@@ -141,7 +141,8 @@ $size_star: 5px;
     animation: flyL 10s linear 1s infinite;
 
     @media screen and (max-width: $small), (orientation: portrait) {
-      right: 120vw;
+      left: auto;
+      right: -10vw;
       top: var(--h);
       animation: flyP 10s linear 1s infinite;
     }

@@ -4,11 +4,11 @@ export default function Navbar(props: { views: Array<boolean> }) {
   const [swipe, setSwipe] = useState(false);
 
   const secciones = [
-    { nombre: "Acerca de Mí", quartile: "75%", classname: ".about" },
-    { nombre: "Lenguajes", quartile: "50%", classname: ".capacities" },
-    { nombre: "Certificaciones", quartile: "25%", classname: ".certifies" },
+    { nombre: "Acerca de Mí", quartile: "0%", classname: ".about" },
+    { nombre: "Lenguajes", quartile: "0%", classname: ".capacities" },
+    { nombre: "Certificaciones", quartile: "0%", classname: ".certifies" },
     //{ nombre: "Trabajos", quartile: "70%", classname: "" },
-    { nombre: "Contacto", quartile: "10%", classname: ".contactos" },
+    { nombre: "Contacto", quartile: "0%", classname: ".contactos" },
   ];
   return (
     <div className="navbar">
