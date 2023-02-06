@@ -141,7 +141,7 @@
   @media screen and (max-width: $small), (orientation: portrait) {
     top: -120vh;
     left: 42vw;
-    --s: 1.5;
+    --s: 1;
   }
 
   &.aniV1start {
@@ -160,7 +160,7 @@
     animation: ufo-view2s 3s,
       ufo-upDown 4s cubic-bezier(0.5, 1, 0.5, 1) 3s infinite;
     @media screen and (max-width: $small), (orientation: portrait) {
-      --s: 1.5;
+      --s: 1;
       top: 15vh;
       left: 42vw;
       animation: ufo-view2s 3s, ufo-leftRight 4s linear 3s infinite;
@@ -172,6 +172,7 @@
     animation: ufo-view1s 3s,
       ufo-square 10s cubic-bezier(0.5, 0.5, 1, 1) 3s infinite;
     @media screen and (max-width: $small), (orientation: portrait) {
+
       top: 15vh;
       left: 42vw;
       animation: ufo-view2s 3s, ufo-leftRight 4s linear 3s infinite;
@@ -241,7 +242,7 @@
         --v: 1;
         position: absolute;
         left: 5.5vw;
-        top: 9vw;
+        top: 11vw;
         width: 4vw;
         height: 1vw;
         box-shadow: 0 0 0.5vw $third_color;

@@ -28,10 +28,11 @@
   display: flex;
   position: relative;
   scroll-snap-align: start;
-  flex: none;
+  justify-content: end;
 
   @media screen and (max-width: $small), (orientation: portrait) {
     flex-direction: column;
+    //justify-content: center;
   }
 
   &__box {
@@ -39,32 +40,22 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: flex-start;
-    flex: 1;
-    &.dum {
-      padding: 0;
-      flex: 2;
-      @media screen and (max-width: $large) {
-        flex: 1;
-      }
-      @media screen and (max-width: $small), (orientation: portrait) {
-        flex: 2;
-      }
-    }
+    justify-content: center;
+    width: 40%;
 
     @media screen and (max-width: $small), (orientation: portrait) {
-      flex: 5;
-      justify-content: center;
+      height: 90%;
+      width: 100%;
       padding: 0 2%;
     }
 
     &-header {
-      //margin: 5% 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: end;
-      flex: 1;
+      justify-content: center;
+      height: 40vh;
+      padding-bottom: 5%;
 
       &.pic {
         height: 40vh;
@@ -90,8 +81,8 @@
         }
 
         @media screen and (max-width: $small), (orientation: portrait) {
-          height: 100%;
-          width: 60%;
+          height: 70%;
+          width: 50%;
         }
 
         div,
@@ -142,7 +133,7 @@
     }
 
     &-content {
-      flex: 1;
+      //flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -222,7 +213,7 @@
 
       input:checked ~ p {
         position: absolute;
-        z-index: 2;
+        z-index: 15;
         width: 32vw;
         height: 85vh;
         background-color: white;

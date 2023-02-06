@@ -75,7 +75,7 @@ export default function Navbar(props: { views: Array<boolean> }) {
           return (
             <div
               key={`s-${index}`}
-              onClick={() => {
+              onMouseEnter={() => {
                 try {
                   document
                     .querySelector(s.classname)

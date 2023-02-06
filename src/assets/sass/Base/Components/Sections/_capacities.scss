@@ -34,6 +34,7 @@
   justify-content: space-around;
   scroll-snap-align: start;
   flex: none;
+  margin: 50vh 0;
   @media screen and (max-width: $large) {
     justify-content: start;
     align-items: center;
@@ -43,7 +44,7 @@
     align-items: flex-end;
   }
   &-box {
-    max-height: 90%;
+    height: 90%;
     width: 40%;
     display: flex;
     flex-direction: column;

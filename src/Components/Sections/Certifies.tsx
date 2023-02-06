@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-hook-inview";
 
-export default function Certifies(props:{view: (node: Element | null) => void}) {
+export default function Certifies(props: {
+  view: (node: Element | null) => void;
+}) {
   /*
   const card = useRef<Array<HTMLDivElement>>([]);
   ref={(el) => (card.current[index] = el!)}*/
   const [sect, inView] = useInView();
-  const [roll, setRoll] = useState(true);
+  /*const [roll, setRoll] = useState(true);
   useEffect(() => {
     if (inView) {
       setRoll(true);
@@ -15,9 +17,9 @@ export default function Certifies(props:{view: (node: Element | null) => void}) 
     }
   }, [inView]);
 
-  const classToogle = (e: React.MouseEvent<HTMLDivElement>) => {
+  /*const classToogle = (e: React.MouseEvent<HTMLDivElement>) => {
     e.currentTarget.classList.toggle("roll");
-  };
+  };*/
 
   const arCert = [
     { titulo: "Docker Essentials:", texto: "A Developer Introduction" },
@@ -46,23 +48,21 @@ export default function Certifies(props:{view: (node: Element | null) => void}) 
 
   return (
     <section className="certifies">
-      <h2>Certificaciones</h2>
-      <div className="titulos" ref={props.view}>
-        <div className="titulos-cards" ref={sect}>
-          {arCert.map((c, index) => {
-            return (
-              <div
-                key={`cert-${index}`}
-                className={`card__titulos ${roll ? "roll" : ""}`}
-                onClick={(e) => classToogle(e)}
-              >
-                <h4>
-                  {c.titulo} <br />
-                </h4>
-                <p>{c.texto}</p>
-              </div>
-            );
-          })}
+      <div className="certifies-box">
+        <h2>Certificaciones</h2>
+        <div className="titulos" ref={props.view}>
+          <div className="titulos-cards" ref={sect}>
+            {arCert.map((c, index) => {
+              return (
+                <div key={`cert-${index}`} className={`card__titulos`}>
+                  <h4>
+                    {c.titulo} <br />
+                  </h4>
+                  <p>{c.texto}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

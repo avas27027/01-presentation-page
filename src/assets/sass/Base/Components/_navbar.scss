@@ -85,6 +85,7 @@
     justify-content: space-around;
     align-items: center;
     transition: 1s;
+    
     /*
     &.left {
       animation: changePosL 2s ease;
@@ -107,6 +108,7 @@
     @media screen and (max-width: $small), (orientation: portrait) {
       left: 20vw;
       width: 80vw;
+      padding-bottom: 10vh;
     }
   }
   .navbar-space {

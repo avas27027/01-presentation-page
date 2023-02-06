@@ -17,6 +17,10 @@
     height: 100vh;
     width: 100vw;
     overflow: auto;
+
+    @media screen and (max-width: $small), (orientation: portrait){
+      //scroll-snap-type: none;
+    }
   }
   &.space {
     height: 200vh;

@@ -7,7 +7,6 @@ export default function About(props: { view: (node: Element | null) => void }) {
 
   return (
     <section className="about">
-      <div className="about__box dum"></div>
       <div className="about__box">
         <div className="about__box-header">
           <div className="about__box-header pic" ref={sect}>
