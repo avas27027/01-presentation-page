@@ -1,0 +1,15 @@
+<svg height="100%" stroke-miterlimit="10"
+    style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1"
+    viewBox="0 0 250 250" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+    xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs />
+    <g id="Capa-1" vectornator:layerName="Capa 1">
+        <g opacity="1">
+            <path d="M100 100L150 300" fill="none" opacity="1" stroke="#3e68ff" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="28.7456" />
+            <path d="M50 300L100 100" fill="none" opacity="1" stroke="#3e68ff" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="28.7456" />
+            
+        </g>
+    </g>
+</svg>
