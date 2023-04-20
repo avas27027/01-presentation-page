@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     host: true
   },
-  //base: "https://avas27027.github.io/01-presentation-page/",
+  base: "https://avas27027.github.io/01-presentation-page/",
 })
